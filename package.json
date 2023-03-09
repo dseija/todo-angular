@@ -1,5 +1,7 @@
 {
   "name": "todo-angular",
+  "description": "TODO web application with Angular.",
+  "author": "David Seija",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
