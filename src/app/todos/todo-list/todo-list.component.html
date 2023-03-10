@@ -3,10 +3,15 @@
     *ngFor="let todo of todoList"
     [selected]="todo.completed"
     [togglePosition]="'before'"
+    color="primary"
   >
-    <div>
-      <span>{{ todo.description }}</span>
-      <button mat-icon-button aria-label="Remove todo item">
+    <div class="list-option-content">
+      <span class="list-option-content__title">{{ todo.description }}</span>
+      <button
+        class="list-option-content__button"
+        mat-icon-button
+        aria-label="Remove todo item"
+      >
         <mat-icon>close</mat-icon>
       </button>
     </div>
