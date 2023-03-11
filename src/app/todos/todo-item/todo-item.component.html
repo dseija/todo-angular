@@ -1,0 +1,19 @@
+<mat-list-option
+  *ngIf="todo"
+  [selected]="todo.completed"
+  [togglePosition]="'before'"
+  color="primary"
+  (selectedChange)="toggleTodoItem($event)"
+>
+  <div class="list-option-content">
+    <span class="list-option-content__title">{{ todo.description }}</span>
+    <button
+      class="list-option-content__button"
+      mat-icon-button
+      aria-label="Remove todo item"
+      (click)="removeTodoItem($event)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</mat-list-option>

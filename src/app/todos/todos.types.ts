@@ -5,3 +5,7 @@ export interface Todo {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface ITodosState {
+  todos: Todo[];
+}

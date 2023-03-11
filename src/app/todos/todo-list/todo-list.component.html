@@ -1,19 +1,7 @@
 <mat-selection-list #todos>
-  <mat-list-option
-    *ngFor="let todo of todoList"
-    [selected]="todo.completed"
-    [togglePosition]="'before'"
-    color="primary"
-  >
-    <div class="list-option-content">
-      <span class="list-option-content__title">{{ todo.description }}</span>
-      <button
-        class="list-option-content__button"
-        mat-icon-button
-        aria-label="Remove todo item"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
-    </div>
-  </mat-list-option>
+  <app-todo-item
+    *ngFor="let todo of todoList$ | async; let i = index"
+    [todo]="todo"
+    [index]="i"
+  ></app-todo-item>
 </mat-selection-list>

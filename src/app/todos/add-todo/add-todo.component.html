@@ -1,6 +1,20 @@
-<mat-form-field>
-  <input matInput placeholder="Add something to do here" autofocus />
-  <button mat-mini-fab color="primary" matSuffix aria-label="Add new todo item">
-    <mat-icon>add</mat-icon>
-  </button>
-</mat-form-field>
+<form (submit)="addTodoItem()">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Add something to do here"
+      autofocus
+      name="description"
+      [(ngModel)]="description"
+    />
+    <button
+      type="submit"
+      mat-mini-fab
+      color="primary"
+      matSuffix
+      aria-label="Add new todo item"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
