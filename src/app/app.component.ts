@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectThemeModeSetting } from './settings/_store/settings.selectors';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'todo-angular';
+export class AppComponent implements OnInit {
+  @HostBinding('class') className = '';
+
+  constructor(private readonly store: Store) {}
+
+  ngOnInit() {
+    this.store.select(selectThemeModeSetting).subscribe((themeMode) => {
+      this.className = themeMode === 'dark' ? 'darkMode' : '';
+    });
+  }
 }

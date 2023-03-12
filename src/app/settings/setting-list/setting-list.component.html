@@ -1,0 +1,14 @@
+<mat-list role="list">
+  <mat-list-item role="listitem">
+    <mat-icon matListItemIcon>brightness_6</mat-icon>
+    <div matListItemTitle class="list-option-content">
+      <span class="list-option-content__title">Dark Mode</span>
+      <mat-slide-toggle
+        class="list-option-content__toggle"
+        color="primary"
+        [checked]="isDarkMode"
+        (toggleChange)="toggleThemeMode()"
+      ></mat-slide-toggle>
+    </div>
+  </mat-list-item>
+</mat-list>

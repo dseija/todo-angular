@@ -1,0 +1,17 @@
+mat-list-item {
+  padding: 0;
+}
+
+.list-option-content {
+  align-items: center;
+  display: flex;
+  height: 56px;
+
+  &__title {
+    flex: 1;
+  }
+
+  &__toggle {
+    margin-right: 10px;
+  }
+}

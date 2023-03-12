@@ -37,6 +37,22 @@ $todo-angular-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($todo-angular-theme);
 
+$todo-angular-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $todo-angular-primary,
+      accent: $todo-angular-accent,
+      warn: $todo-angular-warn,
+    ),
+    typography: mat.define-typography-config(),
+  )
+);
+
+.darkMode {
+  @include mat.all-component-colors($todo-angular-dark-theme);
+  @include mat.typography-hierarchy($todo-angular-dark-theme);
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -45,6 +61,7 @@ body {
 }
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 

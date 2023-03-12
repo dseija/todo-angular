@@ -8,13 +8,18 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { TodosModule } from './todos/todos.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { StoreModule } from '@ngrx/store';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
     TodosModule,
+    SettingsModule,
+
+    StoreModule.forRoot({}),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -22,7 +27,6 @@ import { StoreModule } from '@ngrx/store';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
-    StoreModule.forRoot({}),
   ],
   providers: [
     {
