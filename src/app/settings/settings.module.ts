@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { StoreModule } from '@ngrx/store';
 import { settingsReducer } from './_store/settings.reducer';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   declarations: [SettingsComponent, SettingListComponent],
@@ -15,6 +16,7 @@ import { settingsReducer } from './_store/settings.reducer';
     CommonModule,
     StoreModule.forFeature('settingsState', settingsReducer),
     SettingsRoutingModule,
+    LayoutModule,
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,

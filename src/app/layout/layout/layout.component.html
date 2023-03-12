@@ -1,0 +1,6 @@
+<div class="layout-container">
+  <app-topbar (onMenuClick)="toggleSidebar()"></app-topbar>
+  <app-sidebar [sidebarOpen]="sidebarOpen">
+    <ng-content></ng-content>
+  </app-sidebar>
+</div>

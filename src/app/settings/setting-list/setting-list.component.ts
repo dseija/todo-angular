@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { saveSettings } from '../settings.helpers';
 import { ISettingsState, SettingsThemeMode } from '../settings.types';
 import { toggleThemeMode } from '../_store/settings.actions';
-import { selectThemeModeSetting } from '../_store/settings.selectors';
+import {
+  selectSettings,
+  selectThemeModeSetting,
+} from '../_store/settings.selectors';
 
 @Component({
   selector: 'app-setting-list',
@@ -11,6 +15,7 @@ import { selectThemeModeSetting } from '../_store/settings.selectors';
   styleUrls: ['./setting-list.component.scss'],
 })
 export class SettingListComponent implements OnInit {
+  settings!: ISettingsState;
   themeMode$!: Observable<SettingsThemeMode>;
   isDarkMode = false;
 
@@ -20,6 +25,9 @@ export class SettingListComponent implements OnInit {
     this.themeMode$ = this.store.select(selectThemeModeSetting);
     this.themeMode$.subscribe((themeMode) => {
       this.isDarkMode = themeMode === 'dark';
+    });
+    this.store.select(selectSettings).subscribe((settings) => {
+      saveSettings(settings);
     });
   }
 

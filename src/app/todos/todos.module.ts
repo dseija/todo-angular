@@ -13,6 +13,7 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { StoreModule } from '@ngrx/store';
 import { todosReducer } from './_store/todos.reducer';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { todosReducer } from './_store/todos.reducer';
     FormsModule,
     StoreModule.forFeature('todosState', todosReducer),
     TodosRoutingModule,
+    LayoutModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule,
