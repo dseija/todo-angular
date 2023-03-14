@@ -23,7 +23,6 @@ export class TodoItemComponent {
 
   removeTodoItem(event: Event) {
     event.stopPropagation();
-    console.count('rimuvió?');
     this.store.dispatch(removeTodo({ index: this.index }));
   }
 }

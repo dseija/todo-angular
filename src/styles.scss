@@ -73,4 +73,46 @@ mat-form-field {
   margin-left: auto;
   margin-right: auto;
   max-width: 396px;
+  padding: 64px 10px 0 10px;
+}
+
+.centered-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.avatar-icon {
+  align-items: center;
+  background-color: mat.get-color-from-palette($todo-angular-accent);
+  border-radius: 50%;
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  margin-bottom: 8px;
+  width: 48px;
+
+  &--lg {
+    height: 90px;
+    width: 90px;
+  }
+}
+
+.form-content {
+  margin-top: 16px;
+
+  &-button {
+    width: 100%;
+
+    &__text {
+      vertical-align: middle;
+    }
+
+    &__spinner {
+      display: inline-block !important;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+  }
 }

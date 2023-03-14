@@ -9,6 +9,7 @@ import { TodosModule } from './todos/todos.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { StoreModule } from '@ngrx/store';
 import { SettingsModule } from './settings/settings.module';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { SettingsModule } from './settings/settings.module';
 
     TodosModule,
     SettingsModule,
+    UsersModule,
 
     StoreModule.forRoot({}),
     AppRoutingModule,
