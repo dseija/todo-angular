@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UsersService } from './users.service';
 
 @NgModule({
   declarations: [UserSigninComponent],
@@ -22,5 +23,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     MatProgressSpinnerModule,
   ],
+  providers: [UsersService],
 })
 export class UsersModule {}

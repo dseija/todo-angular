@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-signin',
@@ -10,7 +11,10 @@ export class UserSigninComponent implements OnInit {
   form!: FormGroup;
   submitting = false;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly userService: UsersService
+  ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -22,9 +26,21 @@ export class UserSigninComponent implements OnInit {
   onSubmit() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      console.log('signin!', this.form.value);
       this.submitting = true;
-      setTimeout(() => (this.submitting = false), 2000);
+      this.userService.login(this.form.value).subscribe({
+        next: (userProps) => {
+          console.log('Successfully logged in', userProps);
+          this.submitting = false;
+        },
+        error: (errorStatus: number) => {
+          console.log(
+            errorStatus === 401
+              ? 'Wrong username or password.'
+              : 'Unexpected error, please try again.'
+          );
+          this.submitting = false;
+        },
+      });
     }
   }
 }

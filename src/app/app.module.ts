@@ -10,12 +10,14 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { StoreModule } from '@ngrx/store';
 import { SettingsModule } from './settings/settings.module';
 import { UsersModule } from './users/users.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
     TodosModule,
     SettingsModule,
