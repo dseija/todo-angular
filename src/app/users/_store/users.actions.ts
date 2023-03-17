@@ -1,8 +1,7 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 
 export enum UsersActions {
-  Login = '[Users] Login',
+  LoginSubmit = '[Users] Login Submit',
   LoginSuccess = '[Users] Login Success',
   LoginFailure = '[Users] Login Failure',
   StartProcess = '[Users] Start Process',
@@ -11,8 +10,8 @@ export enum UsersActions {
   ResetSuccess = '[Users] Reset Success Message',
 }
 
-export const login = createAction(
-  UsersActions.Login,
+export const loginSubmit = createAction(
+  UsersActions.LoginSubmit,
   props<{ username: string; password: string }>()
 );
 

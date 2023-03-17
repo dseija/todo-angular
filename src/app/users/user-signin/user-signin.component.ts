@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { IUserState } from '../users.types';
-import { login, resetError } from '../_store/users.actions';
+import { loginSubmit } from '../_store/users.actions';
 import {
   selectErrorMessage,
   selectIsLoggedIn,
@@ -47,8 +47,7 @@ export class UserSigninComponent implements OnInit {
   onSubmit() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.store.dispatch(resetError());
-      this.store.dispatch(login(this.form.value));
+      this.store.dispatch(loginSubmit(this.form.value));
     }
   }
 }
