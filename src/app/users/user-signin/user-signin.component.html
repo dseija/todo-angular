@@ -20,11 +20,11 @@
       type="submit"
       color="primary"
       class="form-content-button"
-      [disabled]="submitting"
+      [disabled]="processing$ | async"
     >
       <span class="form-content-button__text">Sign In</span>
       <mat-spinner
-        *ngIf="submitting"
+        *ngIf="processing$ | async"
         color="accent"
         diameter="20"
         class="form-content-button__spinner"

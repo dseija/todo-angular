@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Todo, ITodosState } from '../todos.types';
+import { ITodosState } from '../todos.types';
 import {
   addTodo,
   removeTodo,

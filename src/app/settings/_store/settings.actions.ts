@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ISettingsState, SettingsThemeMode } from '../settings.types';
+import { ISettingsState } from '../settings.types';
 
 enum SettingsActions {
   SetSettings = '[Settings] Set Settings',

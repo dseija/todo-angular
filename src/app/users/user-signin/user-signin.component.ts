@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../users.service';
+import { Store } from '@ngrx/store';
+import { IUserState } from '../users.types';
+import { login, resetError } from '../_store/users.actions';
+import {
+  selectErrorMessage,
+  selectIsLoggedIn,
+  selectProcessing,
+} from '../_store/users.selectors';
 
 @Component({
   selector: 'app-user-signin',
@@ -9,11 +16,14 @@ import { UsersService } from '../users.service';
 })
 export class UserSigninComponent implements OnInit {
   form!: FormGroup;
-  submitting = false;
+
+  errorMessage$ = this.store.select(selectErrorMessage);
+  isLoggedIn$ = this.store.select(selectIsLoggedIn);
+  processing$ = this.store.select(selectProcessing);
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly userService: UsersService
+    private readonly store: Store<IUserState>
   ) {}
 
   ngOnInit() {
@@ -21,26 +31,24 @@ export class UserSigninComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
+
+    this.errorMessage$.subscribe((error) => {
+      if (error) {
+        console.log({ error });
+      }
+    });
+    this.isLoggedIn$.subscribe((status) => {
+      if (status) {
+        console.log('Login Success!');
+      }
+    });
   }
 
   onSubmit() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.submitting = true;
-      this.userService.login(this.form.value).subscribe({
-        next: (userProps) => {
-          console.log('Successfully logged in', userProps);
-          this.submitting = false;
-        },
-        error: (errorStatus: number) => {
-          console.log(
-            errorStatus === 401
-              ? 'Wrong username or password.'
-              : 'Unexpected error, please try again.'
-          );
-          this.submitting = false;
-        },
-      });
+      this.store.dispatch(resetError());
+      this.store.dispatch(login(this.form.value));
     }
   }
 }

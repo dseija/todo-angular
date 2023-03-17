@@ -8,7 +8,10 @@ export interface UserData {
   token?: string;
 }
 
-export interface UserState {
+export interface IUserState {
   isLoggedIn?: boolean;
-  data?: UserData;
+  data?: Partial<UserData>;
+  errorMessage?: string;
+  successMessage?: string;
+  processing?: boolean;
 }
