@@ -1,12 +1,12 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { UsersService } from './users.service';
+import { SessionService } from './session.service';
 
-export const userAuthGuard: CanActivateFn = () => {
+export const sessionGuard: CanActivateFn = () => {
   const router = inject(Router);
-  const userService = inject(UsersService);
+  const sessionService = inject(SessionService);
 
-  const token = userService.getSessionCookie();
+  const token = sessionService.getSessionCookie();
   if (!token) return router.navigateByUrl('/signin', { replaceUrl: true });
 
   return true;

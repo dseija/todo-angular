@@ -13,6 +13,7 @@ import { TodosModule } from './todos/todos.module';
 import { SettingsModule } from './settings/settings.module';
 import { UsersModule } from './users/users.module';
 import { EffectsModule } from '@ngrx/effects';
+import { SessionModule } from './session/session.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserAnimationsModule,
     HttpClientModule,
 
+    SessionModule,
     TodosModule,
     SettingsModule,
     UsersModule,

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { userAuthGuard } from '../users/userAuth.guard';
+import { sessionGuard } from '../session/session.guard';
 import { TodosComponent } from './todos/todos.component';
 
 const todosRoutes: Routes = [
-  { path: '', component: TodosComponent, canActivate: [userAuthGuard] },
+  { path: '', component: TodosComponent, canActivate: [sessionGuard] },
 ];
 
 @NgModule({

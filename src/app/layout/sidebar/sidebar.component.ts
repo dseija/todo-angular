@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/users/users.service';
+import { SessionService } from 'src/app/session/session.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,12 +11,12 @@ export class SidebarComponent {
   @Input() sidebarOpen = false;
 
   logout() {
-    this.userService.clearCookies();
+    this.sessionService.clearCookies();
     this.router.navigateByUrl('/signin', { replaceUrl: true });
   }
 
   constructor(
-    private readonly userService: UsersService,
+    private readonly sessionService: SessionService,
     private readonly router: Router
   ) {}
 }
