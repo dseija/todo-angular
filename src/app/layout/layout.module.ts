@@ -9,6 +9,7 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LayoutComponent } from './layout/layout.component';
 import { RouterModule } from '@angular/router';
+import { SessionModule } from '../session/session.module';
 
 @NgModule({
   declarations: [TopbarComponent, SidebarComponent, LayoutComponent],
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    SessionModule,
     RouterModule,
   ],
   exports: [LayoutComponent],

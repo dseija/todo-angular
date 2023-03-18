@@ -6,20 +6,13 @@ import {
   USER_TOKEN_COOKIE_KEY,
   USER_USERNAME_COOKIE_KEY,
 } from './session.constants';
+import { ISessionProps } from './session.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SessionService {
-  setCookies({
-    username,
-    firstname,
-    token,
-  }: {
-    username?: string;
-    firstname?: string;
-    token?: string;
-  }) {
+  setCookies({ username, firstname, token }: ISessionProps) {
     this.setCookie(USER_TOKEN_COOKIE_KEY, token as string);
     this.setCookie(USER_FIRSTNAME_COOKIE_KEY, firstname as string);
     this.setCookie(USER_USERNAME_COOKIE_KEY, username as string);

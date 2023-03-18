@@ -22,7 +22,6 @@ import { SessionModule } from './session/session.module';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    SessionModule,
     TodosModule,
     SettingsModule,
     UsersModule,
