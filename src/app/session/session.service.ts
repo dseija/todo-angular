@@ -18,7 +18,7 @@ export class SessionService {
     this.setCookie(USER_USERNAME_COOKIE_KEY, username as string);
   }
 
-  getSessionCookie() {
+  getSessionTokenCookie() {
     return this.getCookieByKey(USER_TOKEN_COOKIE_KEY);
   }
 

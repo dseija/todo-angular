@@ -6,7 +6,7 @@ export const sessionGuard: CanActivateFn = () => {
   const router = inject(Router);
   const sessionService = inject(SessionService);
 
-  const token = sessionService.getSessionCookie();
+  const token = sessionService.getSessionTokenCookie();
   if (!token) return router.navigateByUrl('/signin', { replaceUrl: true });
 
   return true;

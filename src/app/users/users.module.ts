@@ -17,6 +17,7 @@ import { UsersEffects } from './_store/users.effects';
 import { UsersComponent } from './users/users.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LayoutModule } from '../layout/layout.module';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [UserSigninComponent, UsersComponent, UserProfileComponent],
@@ -32,6 +33,7 @@ import { LayoutModule } from '../layout/layout.module';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
   ],

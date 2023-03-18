@@ -4,7 +4,14 @@ import { catchError, exhaustMap, map, of } from 'rxjs';
 
 import { SessionService } from '../../session/session.service';
 import { UsersService } from '../users.service';
-import { loginSubmit, loginFailure, loginSuccess } from './users.actions';
+import {
+  loginSubmit,
+  loginFailure,
+  loginSuccess,
+  loadUser,
+  loadUserSuccess,
+  loadUserFailure,
+} from './users.actions';
 
 @Injectable()
 export class UsersEffects {
@@ -27,6 +34,26 @@ export class UsersEffects {
               })
             )
           )
+        )
+      )
+    )
+  );
+
+  loadUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadUser),
+      exhaustMap(() =>
+        this.usersService.getUser().pipe(
+          map((userData) => loadUserSuccess(userData)),
+          catchError((errorStatus: number) => {
+            let errorMessage = 'Unexpected error, please try again.';
+            if ([401, 403].includes(errorStatus)) {
+              this.sessionService.clearCookies();
+              errorMessage = 'Session expired, please sign in.';
+            }
+
+            return of(loadUserFailure({ errorMessage }));
+          })
         )
       )
     )

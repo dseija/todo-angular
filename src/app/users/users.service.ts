@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { HttpHelperService } from '../shared/services/http-helper.service';
 import { UserData } from './users.types';
 
 @Injectable({
@@ -24,5 +25,20 @@ export class UsersService {
       );
   }
 
-  constructor(private readonly http: HttpClient) {}
+  getUser(): Observable<Partial<UserData>> {
+    return this.http
+      .get<UserData>(`${environment.apiUrl}/user/whoami`, {
+        headers: this.httpHelper.getAuthHeaders(),
+      })
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          throw err.status;
+        })
+      );
+  }
+
+  constructor(
+    private readonly http: HttpClient,
+    private readonly httpHelper: HttpHelperService
+  ) {}
 }

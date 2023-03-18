@@ -1,1 +1,25 @@
-<p>user-profile works!</p>
+<div *ngIf="processing$ | async" class="centered-content">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div
+  *ngIf="!(processing$ | async) && (userData$ | async) as userData"
+  class="centered-content"
+>
+  <div class="avatar-icon avatar-icon--lg">
+    <mat-icon color="secondary">person</mat-icon>
+  </div>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      >First Name: <b>{{ userData.firstname }}</b></mat-list-item
+    >
+    <mat-list-item role="listitem"
+      >Last Name: <b>{{ userData.lastname }}</b></mat-list-item
+    >
+    <mat-list-item role="listitem"
+      >Email Address: <b>{{ userData.username }}</b></mat-list-item
+    >
+  </mat-list>
+
+  <p></p>
+</div>
