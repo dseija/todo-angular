@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IUserState } from '../users.types';
 import { loginSubmit } from '../_store/users.actions';
@@ -23,7 +25,9 @@ export class UserSigninComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly store: Store<IUserState>
+    private readonly store: Store<IUserState>,
+    private readonly router: Router,
+    private readonly _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -33,14 +37,11 @@ export class UserSigninComponent implements OnInit {
     });
 
     this.errorMessage$.subscribe((error) => {
-      if (error) {
-        console.log({ error });
-      }
+      if (error) this.showMessage(error);
     });
+
     this.isLoggedIn$.subscribe((status) => {
-      if (status) {
-        console.log('Login Success!');
-      }
+      if (status) this.router.navigateByUrl('/', { replaceUrl: true });
     });
   }
 
@@ -49,5 +50,12 @@ export class UserSigninComponent implements OnInit {
     if (this.form.valid) {
       this.store.dispatch(loginSubmit(this.form.value));
     }
+  }
+
+  showMessage(message: string) {
+    this._snackBar.open(message, 'Close', {
+      duration: 5000,
+      verticalPosition: 'top',
+    });
   }
 }

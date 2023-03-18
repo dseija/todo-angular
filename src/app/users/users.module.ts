@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { UserSigninComponent } from './user-signin/user-signin.component';
@@ -28,6 +29,7 @@ import { UsersEffects } from './_store/users.effects';
     MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
   providers: [UsersService],
 })

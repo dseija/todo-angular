@@ -7,14 +7,15 @@ import { loginSubmit, loginFailure, loginSuccess } from './users.actions';
 
 @Injectable()
 export class UsersEffects {
-  login$ = createEffect(() =>
+  loginSubmit$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loginSubmit),
       exhaustMap((loginData) =>
         this.usersService.login(loginData).pipe(
-          map(({ username, firstname, token }) =>
-            loginSuccess({ username, firstname, token })
-          ),
+          map(({ username, firstname, token }) => {
+            this.usersService.setCookies({ username, firstname, token });
+            return loginSuccess({ username, firstname });
+          }),
           catchError((errorStatus: number) =>
             of(
               loginFailure({
