@@ -17,12 +17,12 @@ export class TodoItemComponent {
   toggleTodoItem(completed: boolean) {
     if (completed !== this.todo?.completed)
       this.store.dispatch(
-        updateTodoCompleted({ index: this.index, completed })
+        updateTodoCompleted({ id: this.todo?.id as string, completed })
       );
   }
 
   removeTodoItem(event: Event) {
     event.stopPropagation();
-    this.store.dispatch(removeTodo({ index: this.index }));
+    this.store.dispatch(removeTodo({ id: this.todo?.id as string }));
   }
 }

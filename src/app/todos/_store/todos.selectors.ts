@@ -20,6 +20,11 @@ export const selectTodos = createSelector(
   (state) => state.todos
 );
 
+export const selectTodosLength = createSelector(
+  selectTodosState,
+  (state) => state.todos.length
+);
+
 export const selectCompletedTodos = createSelector(selectTodos, (todos) =>
   todos.filter((todo) => todo.completed)
 );

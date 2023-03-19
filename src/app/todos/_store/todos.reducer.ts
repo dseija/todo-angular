@@ -51,10 +51,10 @@ export const todosReducer = createReducer(
     ),
   })),
 
-  on(updateTodoCompleted, (state, { index, completed }) => ({
+  on(updateTodoCompleted, (state, { id, completed }) => ({
     ...state,
-    todos: state.todos.map((todo, i) =>
-      index === i
+    todos: state.todos.map((todo) =>
+      todo.id === id
         ? {
             ...todo,
             completed,
@@ -71,8 +71,8 @@ export const todosReducer = createReducer(
     })),
   })),
 
-  on(removeTodo, (state, { index }) => ({
+  on(removeTodo, (state, { id }) => ({
     ...state,
-    todos: state.todos.filter((_todo, i) => i !== index),
+    todos: state.todos.filter((todo) => todo.id !== id),
   }))
 );

@@ -23,6 +23,50 @@ export class TodosService {
       );
   }
 
+  createTodo(description: string): Observable<Todo> {
+    return this.http
+      .post<Todo>(
+        `${environment.apiUrl}/todos`,
+        { description },
+        {
+          headers: this.httpHelper.getAuthHeaders(),
+        }
+      )
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          throw err.status;
+        })
+      );
+  }
+
+  updateTodo(id: string, completed: boolean): Observable<Todo> {
+    return this.http
+      .put<Todo>(
+        `${environment.apiUrl}/todos/${id}`,
+        { completed },
+        {
+          headers: this.httpHelper.getAuthHeaders(),
+        }
+      )
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          throw err.status;
+        })
+      );
+  }
+
+  deleteTodo(id: string): Observable<Todo> {
+    return this.http
+      .delete<Todo>(`${environment.apiUrl}/todos/${id}`, {
+        headers: this.httpHelper.getAuthHeaders(),
+      })
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          throw err.status;
+        })
+      );
+  }
+
   constructor(
     private readonly http: HttpClient,
     private readonly httpHelper: HttpHelperService

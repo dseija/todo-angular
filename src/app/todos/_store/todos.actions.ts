@@ -12,6 +12,9 @@ enum TodosActions {
   UpdateTodoCompleted = '[Todos] Update Todo Completed',
   UpdateTodoId = '[Todos] Update Todo Id',
   RemoveTodo = '[Todos] Remove Todo',
+
+  UpdateTodoSuccess = '[Todos] Update Todo Success',
+  RemoveTodoSuccess = '[Todos] Remove Todo Success',
 }
 
 export const loadTodos = createAction(TodosActions.LoadTodos);
@@ -30,7 +33,7 @@ export const setTodos = createAction(
 );
 export const addTodo = createAction(
   TodosActions.AddTodo,
-  props<{ description: string }>()
+  props<{ index: number; description: string }>()
 );
 export const toggleTodo = createAction(
   TodosActions.ToggleTodo,
@@ -38,7 +41,7 @@ export const toggleTodo = createAction(
 );
 export const updateTodoCompleted = createAction(
   TodosActions.UpdateTodoCompleted,
-  props<{ index: number; completed: boolean }>()
+  props<{ id: string; completed: boolean }>()
 );
 export const updateTodoId = createAction(
   TodosActions.UpdateTodoId,
@@ -46,5 +49,9 @@ export const updateTodoId = createAction(
 );
 export const removeTodo = createAction(
   TodosActions.RemoveTodo,
-  props<{ index: number }>()
+  props<{ id: string }>()
 );
+
+export const updateTodoSuccess = createAction(TodosActions.UpdateTodoSuccess);
+
+export const removeTodoSuccess = createAction(TodosActions.RemoveTodoSuccess);

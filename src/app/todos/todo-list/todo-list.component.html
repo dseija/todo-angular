@@ -2,7 +2,7 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<mat-selection-list #todos>
+<mat-selection-list *ngIf="!(processing$ | async)" #todos>
   <app-todo-item
     *ngFor="let todo of todoList$ | async; let i = index"
     [todo]="todo"
