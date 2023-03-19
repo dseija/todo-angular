@@ -70,6 +70,10 @@ a {
   text-decoration: none;
 }
 
+.hidden {
+  display: none !important;
+}
+
 mat-form-field {
   width: 100%;
 }

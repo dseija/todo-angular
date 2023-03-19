@@ -1,6 +1,9 @@
 <div class="layout-container">
-  <app-topbar (onMenuClick)="toggleSidebar()"></app-topbar>
-  <app-sidebar [sidebarOpen]="sidebarOpen">
+  <app-topbar
+    [isMobile]="mobileQuery.matches"
+    (onMenuClick)="toggleSidebar()"
+  ></app-topbar>
+  <app-sidebar [sidebarOpen]="sidebarOpen" [mode]="getSidebarMode()">
     <ng-content></ng-content>
   </app-sidebar>
 </div>

@@ -1,5 +1,6 @@
 <mat-toolbar color="primary">
   <button
+    [ngClass]="!isMobile ? 'hidden' : ''"
     mat-icon-button
     aria-label="Open Sidebar Menu"
     (click)="onMenuClick.emit()"

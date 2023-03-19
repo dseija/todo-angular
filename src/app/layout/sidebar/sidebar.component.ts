@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MatDrawerMode } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/session/session.service';
 
@@ -8,7 +9,16 @@ import { SessionService } from 'src/app/session/session.service';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
+  @Input() mode: MatDrawerMode = 'side';
   @Input() sidebarOpen = false;
+
+  isOverMode() {
+    return this.mode === 'over';
+  }
+
+  isSideMode() {
+    return this.mode === 'side';
+  }
 
   logout() {
     this.sessionService.clearCookies();

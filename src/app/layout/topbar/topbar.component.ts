@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-topbar',
@@ -6,5 +6,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./topbar.component.scss'],
 })
 export class TopbarComponent {
+  @Input() isMobile = false;
   @Output() onMenuClick = new EventEmitter();
 }
