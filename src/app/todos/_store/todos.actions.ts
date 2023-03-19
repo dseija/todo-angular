@@ -2,6 +2,10 @@ import { createAction, props } from '@ngrx/store';
 import { Todo } from '../todos.types';
 
 enum TodosActions {
+  LoadTodos = '[Todos] Load Todos',
+  LoadTodosSuccess = '[Todos] Load Todos Success',
+  LoadTodosFailure = '[Todos] Load Todos Failure',
+
   SetTodos = '[Todos] Set Todos',
   AddTodo = '[Todos] Add Todo',
   ToggleTodo = '[Todos] Toggle Todo',
@@ -9,6 +13,16 @@ enum TodosActions {
   UpdateTodoId = '[Todos] Update Todo Id',
   RemoveTodo = '[Todos] Remove Todo',
 }
+
+export const loadTodos = createAction(TodosActions.LoadTodos);
+export const loadTodosSuccess = createAction(
+  TodosActions.LoadTodosSuccess,
+  props<{ todos: Todo[] }>()
+);
+export const loadTodosFailure = createAction(
+  TodosActions.LoadTodosFailure,
+  props<{ unauthorized: boolean }>()
+);
 
 export const setTodos = createAction(
   TodosActions.SetTodos,

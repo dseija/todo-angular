@@ -2,6 +2,9 @@ import { createReducer, on } from '@ngrx/store';
 import { ITodosState } from '../todos.types';
 import {
   addTodo,
+  loadTodos,
+  loadTodosFailure,
+  loadTodosSuccess,
   removeTodo,
   setTodos,
   toggleTodo,
@@ -15,6 +18,19 @@ export const todosInitialState: ITodosState = {
 
 export const todosReducer = createReducer(
   todosInitialState,
+
+  // Load Todos Reducers
+  on(loadTodos, (state) => ({ ...state, processing: true })),
+  on(loadTodosSuccess, (state, { todos }) => ({
+    ...state,
+    todos,
+    processing: false,
+  })),
+  on(loadTodosFailure, (state, { unauthorized }) => ({
+    ...state,
+    unauthorized,
+    processing: false,
+  })),
 
   on(setTodos, (state, { todos }) => ({ ...state, todos })),
 

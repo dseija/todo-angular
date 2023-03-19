@@ -8,4 +8,6 @@ export interface Todo {
 
 export interface ITodosState {
   todos: Todo[];
+  processing?: boolean;
+  unauthorized?: boolean;
 }

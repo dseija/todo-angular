@@ -14,6 +14,10 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
 import { StoreModule } from '@ngrx/store';
 import { todosReducer } from './_store/todos.reducer';
 import { LayoutModule } from '../layout/layout.module';
+import { TodosService } from './todos.service';
+import { EffectsModule } from '@ngrx/effects';
+import { TodosEffects } from './_store/todos.effects';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -26,12 +30,15 @@ import { LayoutModule } from '../layout/layout.module';
     CommonModule,
     FormsModule,
     StoreModule.forFeature('todosState', todosReducer),
+    EffectsModule.forFeature(TodosEffects),
     TodosRoutingModule,
     LayoutModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule,
     MatListModule,
+    MatProgressSpinnerModule,
   ],
+  providers: [TodosService],
 })
 export class TodosModule {}
