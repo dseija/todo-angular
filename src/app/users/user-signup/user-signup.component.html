@@ -3,13 +3,27 @@
     <div class="avatar-icon">
       <mat-icon color="secondary">person</mat-icon>
     </div>
-    <h2 class="mat-headline-5">Sign in</h2>
+    <h2 class="mat-headline-5">Sign up</h2>
   </div>
 
   <form [formGroup]="form" (submit)="onSubmit()" class="form-content">
+    <mat-grid-list cols="2" rowHeight="78px" gutterSize="16px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstname" autofocus />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastname" />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
     <mat-form-field>
       <mat-label>Email Address</mat-label>
-      <input matInput formControlName="username" autofocus />
+      <input matInput formControlName="username" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password</mat-label>
@@ -22,7 +36,7 @@
       class="form-content-button"
       [disabled]="processing$ | async"
     >
-      <span class="form-content-button__text">Sign In</span>
+      <span class="form-content-button__text">Sign Up</span>
       <mat-spinner
         *ngIf="processing$ | async"
         color="accent"
@@ -32,6 +46,6 @@
     </button>
   </form>
   <div class="right-content">
-    <a routerLink="/signup">Don't have an account? Sign Up</a>
+    <a routerLink="/signin">Already have an account? Sign in</a>
   </div>
 </div>

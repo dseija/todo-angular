@@ -11,6 +11,9 @@ import {
   loadUser,
   loadUserSuccess,
   loadUserFailure,
+  registerSubmit,
+  registerSuccess,
+  registerFailure,
 } from './users.actions';
 
 export const usersInitialState: IUserState = {};
@@ -32,6 +35,24 @@ export const usersReducer = createReducer(
     processing: false,
   })),
   on(loginFailure, (state, { errorMessage }) => ({
+    ...state,
+    errorMessage,
+    processing: false,
+  })),
+
+  // Register Reducers
+  on(registerSubmit, (state) => ({
+    ...state,
+    processing: true,
+    errorMessage: '',
+    successMessage: '',
+  })),
+  on(registerSuccess, (state, { username }) => ({
+    ...state,
+    data: { username },
+    processing: false,
+  })),
+  on(registerFailure, (state, { errorMessage }) => ({
     ...state,
     errorMessage,
     processing: false,

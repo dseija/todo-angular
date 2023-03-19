@@ -7,6 +7,11 @@ export enum UsersActions {
   LoginSuccess = '[Users] Login Success',
   LoginFailure = '[Users] Login Failure',
 
+  // Register Actions
+  RegisterSubmit = '[Users] Register Submit',
+  RegisterSuccess = '[Users] Register Success',
+  RegisterFailure = '[Users] Register Failure',
+
   // Generic Actions
   StartProcess = '[Users] Start Process',
   EndProcess = '[Users] End Process',
@@ -31,6 +36,21 @@ export const loginSuccess = createAction(
 
 export const loginFailure = createAction(
   UsersActions.LoginFailure,
+  props<{ errorMessage?: string }>()
+);
+
+export const registerSubmit = createAction(
+  UsersActions.RegisterSubmit,
+  props<Partial<UserData>>()
+);
+
+export const registerSuccess = createAction(
+  UsersActions.RegisterSuccess,
+  props<{ username?: string }>()
+);
+
+export const registerFailure = createAction(
+  UsersActions.RegisterFailure,
   props<{ errorMessage?: string }>()
 );
 

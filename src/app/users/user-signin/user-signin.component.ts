@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IUserState } from '../users.types';
 import { loginSubmit } from '../_store/users.actions';
@@ -27,6 +27,7 @@ export class UserSigninComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly store: Store<IUserState>,
     private readonly router: Router,
+    private readonly route: ActivatedRoute,
     private readonly _snackBar: MatSnackBar
   ) {}
 
@@ -42,6 +43,12 @@ export class UserSigninComponent implements OnInit {
 
     this.isLoggedIn$.subscribe((status) => {
       if (status) this.router.navigateByUrl('/', { replaceUrl: true });
+    });
+
+    this.route.params.subscribe((params) => {
+      if (params['action'] === 'register' && params['status'] === 'success') {
+        this.showMessage('Your account has been created! Now you can sign in.');
+      }
     });
   }
 

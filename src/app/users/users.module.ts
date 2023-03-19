@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -18,9 +19,15 @@ import { UsersComponent } from './users/users.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LayoutModule } from '../layout/layout.module';
 import { MatListModule } from '@angular/material/list';
+import { UserSignupComponent } from './user-signup/user-signup.component';
 
 @NgModule({
-  declarations: [UserSigninComponent, UsersComponent, UserProfileComponent],
+  declarations: [
+    UserSigninComponent,
+    UsersComponent,
+    UserProfileComponent,
+    UserSignupComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,6 +38,7 @@ import { MatListModule } from '@angular/material/list';
     EffectsModule.forFeature(UsersEffects),
 
     MatButtonModule,
+    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatListModule,

@@ -11,6 +11,9 @@ import {
   loadUser,
   loadUserSuccess,
   loadUserFailure,
+  registerSubmit,
+  registerSuccess,
+  registerFailure,
 } from './users.actions';
 
 @Injectable()
@@ -30,6 +33,27 @@ export class UsersEffects {
                 errorMessage:
                   errorStatus === 401
                     ? 'Wrong username or password.'
+                    : 'Unexpected error, please try again.',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  registerSubmit$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(registerSubmit),
+      exhaustMap((registerData) =>
+        this.usersService.register(registerData).pipe(
+          map(({ username }) => registerSuccess({ username })),
+          catchError((errorStatus: number) =>
+            of(
+              registerFailure({
+                errorMessage:
+                  errorStatus === 409
+                    ? 'An account with that email already exists.'
                     : 'Unexpected error, please try again.',
               })
             )

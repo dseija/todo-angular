@@ -25,6 +25,19 @@ export class UsersService {
       );
   }
 
+  register(registerData: Partial<UserData>): Observable<Partial<UserData>> {
+    return this.http
+      .post<UserData>(`${environment.apiUrl}/auth/register`, registerData)
+      .pipe(
+        map((res) => ({
+          username: res.username,
+        })),
+        catchError((err: HttpErrorResponse) => {
+          throw err.status;
+        })
+      );
+  }
+
   getUser(): Observable<Partial<UserData>> {
     return this.http
       .get<UserData>(`${environment.apiUrl}/user/whoami`, {
